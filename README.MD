@@ -8,3 +8,10 @@ And makes Code Reviews easier.
 1. Install this dependency: `npm i @trisbee/lingui-locale-cleaner`
 2. Run command `lingui-locale-cleaner <path_to_locale_directory>`
 
+## Example of annoying code review
+
+![cr](./.doc/code-review-hell.png)
+
+**and after:**
+
+![after](./.doc/after.png)
