@@ -24,7 +24,7 @@
     "trisbee"
   ],
   "author": "HamAndRock",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/trisbee/lingui-locale-cleaner/issues"
   },
