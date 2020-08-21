@@ -20,7 +20,7 @@
     "React"
   ],
   "author": "HamAndRock",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/trisbee/lingui-locale-cleaner/issues"
   },
