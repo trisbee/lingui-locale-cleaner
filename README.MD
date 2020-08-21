@@ -12,6 +12,6 @@ And makes Code Reviews easier.
 
 ![cr](./.doc/code-review-hell.png)
 
-**and after:**
+**and after using @trisbee/lingui-locale-cleaner:**
 
 ![after](./.doc/after.png)
