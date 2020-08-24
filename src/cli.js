@@ -31,7 +31,7 @@ export function cli(args) {
                 try {
                     fs.readFile(localePath, 'utf-8', (err, data) => {
                         data = data.replace(/^#[:] [^\n]+$/gm, '');
-                        data = data.replace(/[\r?\n|\r]+/gm, '\n');
+                        data = data.replace(/[\r\n|\r|\n]+/gm, '\n');
 
                         //checks for first empty line
                         let counter = 0;
