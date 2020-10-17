@@ -24,9 +24,7 @@ export function cli(args) {
                 let backUpPath = path.join(parentDir, localeDir, 'backup_messages.po');
                 let localePath = path.join(parentDir, localeDir, 'messages.po');
 
-                fs.copyFileSync(localePath, backUpPath, (err) => {
-                    if (err) console.log(err);
-                });
+                fs.copyFileSync(localePath, backUpPath);
 
                 try {
                     fs.readFile(localePath, 'utf-8', (err, data) => {
