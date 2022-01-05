@@ -6,6 +6,8 @@ jobs:
   pull-request-created:
     name: 'Pull request created'
     runs-on: ubuntu-latest
+    env:
+      BUILD_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
     steps:
       - name: 'Send working message to PR as comment'
         uses: marocchino/sticky-pull-request-comment@v1
