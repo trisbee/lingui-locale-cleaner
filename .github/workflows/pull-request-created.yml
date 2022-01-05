@@ -1,0 +1,55 @@
+name: 'Pull request'
+
+on: pull_request
+
+jobs:
+  pull-request-created:
+    name: 'Pull request created'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Send working message to PR as comment'
+        uses: marocchino/sticky-pull-request-comment@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          recreate: true
+          message: |
+            ⏳ Starting build, please wait ...
+
+            ---
+
+            _You can watch progress on [build URL](${{ env.BUILD_URL }})_
+
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - uses: mansona/npm-lockfile-version@v1
+
+      - name: 'Test build'
+        run: npm ci
+
+      - name: 'The job has failed'
+        if: ${{ failure() }}
+        uses: marocchino/sticky-pull-request-comment@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          recreate: true
+          message: |
+            🔥 **Build failed**
+
+            ---
+
+            _Please check logs on [build URL](${{ env.BUILD_URL }})_
+
+      - name: 'Archive npm failure logs'
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: npm-logs
+          path: ~/.npm/_logs
+
+      - name: 'Send URL address to PR as comment'
+        uses: marocchino/sticky-pull-request-comment@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          recreate: true
+          message: |
+            👍 **All good!**
